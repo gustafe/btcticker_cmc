@@ -1,0 +1,9 @@
+/btctracker.ini
+/cmc_map
+/database.db
+/fill-history.pl
+/log
+/out
+/schema.sql
+/util-load-ticker-from-file.pl
+/util-populate-cmc-map.pl

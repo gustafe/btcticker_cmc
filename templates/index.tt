@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+table,h3 {
+  font-variant-numeric: tabular-nums;
+}
+table, th {
+    border: 1px solid #839496;
+    border-collapse: collapse;
+
+    }
+
+th, td {
+    padding: 5px;
+/*    width: 175px; */
+    padding-left: 20px;
+    padding-right: 10px;
+}
+td {    text-align: right;
+    font-family: Andale Mono, Courier New, monospace;
+    }
+h2.btc_latest {font-size: 200%; margin-left: 18%; }
+h1.title {font-size: 95%;}
+
+      </style>
+    <title>[% meta.title -%]</title>
+  </head>
+  <body>
+    <h1 class="title">[% meta.title -%]</h1>
+
+    <h2 class="btc_latest">[% content.btc_latest -%]</h2>
+
+    <h3>Updated on [% content.updated -%] UTC</h3>
+
+    <p>Data from <a href="https://coinmarketcap.com">CoinMarketCap</a>. Update frequency is currently every 7 minutes.</p>
+    
+    <table>
+      <thead>
+	<tr><th colspan=5></th><th colspan=6>Percentage change</th></tr>
+      <tr><th>CMC rank</th><th>Name</th><th>Price (USD)</th><th>Price (satoshis)</th><th>Unit volume</th>
+	<th>1h</th><th>24h</th><th>7d</th><th>30d</th><th>60d</th><th>90d</th>
+      </tr>
+      </thead>
+      <tbody>
+      [% FOR row IN content.table_data -%]
+      <tr>
+	[% FOR el IN row -%]
+	<td>[% el -%]</td>
+	[% END -%]
+      </tr>
+      
+      [% END -%]
+      </tbody>
+    </table>
+
+[% USE Markdown -%]
+[% FILTER markdown %]
+
+## Random stats and figures
+[% FOREACH entry IN content.past_events %]
+
+<a href="[% entry.anchor  %]"></a>    
+### [% entry.header -%]
+
+[% entry.content.join('
+
+') %]
+
+[% END %]
+[% END %]
+
+<h2>Changelog</h2>
+
+<ul>
+[% FOREACH line IN content.changelog %]
+<li>[% line -%]</li>
+[% END %]
+</ul>
+
+  </body>
+</html>
