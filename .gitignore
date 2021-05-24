@@ -7,3 +7,5 @@
 /schema.sql
 /util-load-ticker-from-file.pl
 /util-populate-cmc-map.pl
+/TODO
+/btcticker.ini
