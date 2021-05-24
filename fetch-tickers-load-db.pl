@@ -18,7 +18,7 @@ use BTCTicker
     qw/get_dbh large_num past_events nformat changelog epoch_to_parts commify/;
 
 
-my $cfg = new Config::Simple("$FindBin::Bin/btctracker.ini");
+my $cfg = new Config::Simple("$FindBin::Bin/btcticker.ini");
 my ( $url_base, $api_key ) = (
         'https://pro-api.coinmarketcap.com/v1/cryptocurrency/',
         $cfg->param('CoinMarketCap.api_key'));
@@ -105,9 +105,10 @@ for my $id ( sort { $tickers{$a}->{cmc_rank} <=> $tickers{$b}->{cmc_rank} }
         map { sprintf( "%.2f", $quote_data{$_} ) } @percentages,
         ];
 }
+my $now = maxstr @timestamps;
 # open( my $fh, '>>', "$FindBin::Bin/log" )
 #     or warn "can't open $FindBin::Bin/log: $!";
-# my $now = maxstr @timestamps;
+
 # my $pad = ' ' x int( ( 80 - ( 2 * 4 ) - length($now) ) / 2 );
 
 # say $fh $pad . "==> $now <==";

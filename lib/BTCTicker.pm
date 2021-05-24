@@ -19,7 +19,7 @@ $VERSION = 1.00;
 
 ### DBH
 
-my $cfg = Config::Simple->new('/home/gustaf/prj/NewBTCTicker/btctracker.ini');
+my $cfg = Config::Simple->new('/home/gustaf/prj/NewBTCTicker/btcticker.ini');
 my $driver   = $cfg->param('DB.driver');
 my $database = $cfg->param('DB.database');
 my $dbuser   = $cfg->param('DB.user');

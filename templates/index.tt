@@ -4,29 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-table,h3 {
-  font-variant-numeric: tabular-nums;
-}
-table, th {
-    border: 1px solid #839496;
-    border-collapse: collapse;
+    <link type="text/css" media="all" rel="stylesheet" href="http://gerikson.com/stylesheets/btcticker.css" />
 
-    }
-
-th, td {
-    padding: 5px;
-/*    width: 175px; */
-    padding-left: 20px;
-    padding-right: 10px;
-}
-td {    text-align: right;
-    font-family: Andale Mono, Courier New, monospace;
-    }
-h2.btc_latest {font-size: 200%; margin-left: 18%; }
-h1.title {font-size: 95%;}
-
-      </style>
     <title>[% meta.title -%]</title>
   </head>
   <body>
@@ -37,6 +16,7 @@ h1.title {font-size: 95%;}
     <h3>Updated on [% content.updated -%] UTC</h3>
 
     <p>Data from <a href="https://coinmarketcap.com">CoinMarketCap</a>. Update frequency is currently every 7 minutes.</p>
+   <p><a href="about.html">About</a><p>
     
     <table>
       <thead>
@@ -72,14 +52,6 @@ h1.title {font-size: 95%;}
 
 [% END %]
 [% END %]
-
-<h2>Changelog</h2>
-
-<ul>
-[% FOREACH line IN content.changelog %]
-<li>[% line -%]</li>
-[% END %]
-</ul>
 
   </body>
 </html>
