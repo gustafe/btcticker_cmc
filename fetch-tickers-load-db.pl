@@ -117,15 +117,22 @@ my $now = maxstr @timestamps;
 # }
 # close $fh;
 
-#my ($ss,$mm,$hh,$day,$month,$year,$zone) = strptime($now);
-#my $updated = join(' ',($ss,$mm,$hh,$day,$month,$year,$zone));
+#my ($ss,$mm,$hh,$day,$month,$year,$zone) = strptime($now, 'UTC');
+my $updated_dt = DateTime->from_epoch(epoch=>str2time($now), time_zone=>'Europe/Stockholm');
+my $updated = $updated_dt->datetime;
+
+  #join(' ',($ss,$mm,$hh,$day,$month,$year,$zone));
+
 my %data = (
-    meta    => { title => "Even slower BTC ticker", },
+	    meta    => { title => "Even slower BTC ticker",
+		       		generate_time => $updated,},
     content => {
         rows        => \@rows,
-        btc_latest  => nformat($btc_price),
+		btc_latest  => nformat($btc_price),
+		btc_real => $btc_price,
         updated     => epoch_to_parts( str2time($now) )->{std},
-        table_data  => \@table_data,
+
+		table_data  => \@table_data,
         past_events => past_events($btc_price),
         changelog   => changelog(),
     },

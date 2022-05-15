@@ -4,19 +4,35 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" media="all" rel="stylesheet" href="http://gerikson.com/stylesheets/btcticker.css" />
+    <link type="text/css" media="all" rel="stylesheet" href="https://gerikson.com/stylesheets/btcticker.css" />
 
-    <title>[% meta.title -%]</title>
+    <title>[% content.btc_latest -%] - [% meta.title -%]</title>
+
+<script src="https://gerikson.com/js/pretty.js"></script>
+
+<script>
+window.onload = function(){
+	var links = document.getElementById("generated");	
+
+		if ( links.getAttribute("timestamp")) {
+			var date = prettyDate(links.getAttribute("timestamp"));
+			if ( date )
+				links.innerHTML = date;
+		}
+};
+</script>
+
   </head>
   <body>
     <h1 class="title">[% meta.title -%]</h1>
 
     <h2 class="btc_latest">[% content.btc_latest -%]</h2>
 
-    <h3>Updated on [% content.updated -%] UTC</h3>
+    <h3>Updated on [% content.updated -%] UTC, <span id="generated"
+timestamp="[% meta.generate_time %]"
+title="[% meta.generate_time %]">[% meta.generate_time %]</span></h3>
 
     <p>Data from <a href="https://coinmarketcap.com">CoinMarketCap</a>. Update frequency is currently every 7 minutes.</p>
-   <p><a href="about.html">About</a><p>
     
     <table>
       <thead>
@@ -36,7 +52,23 @@
       [% END -%]
       </tbody>
     </table>
+<p />
+[% times = ['rank' 'name' 'price_usd' 'price_sat' 'vol_24h' '1h' '24h' '7d' '30d' '60d' '90d'] %]
+    <table>
+      <thead>
+	<tr><th>Time period</th><th>Price</th><th>Percentage change</th></tr>
+      </thead>
+      <tbody>
+	[% FOR n IN [ 5..10 ] -%]
 
+	<tr>
+	  <td>[% times.$n -%]</td>
+	  <td>[% content.btc_real / ( 1 + content.table_data.0.$n / 100 )  -%]</td>
+	  <td>[% content.table_data.0.$n -%]</td></tr>
+	[% END -%]
+      </tbody>
+    </table>
+    
 [% USE Markdown -%]
 [% FILTER markdown %]
 
@@ -53,5 +85,10 @@
 [% END %]
 [% END %]
 
+<hr />
+<address>
+  This a slow web project by Gustaf Erikson. <a href="about.html">About</a>.
+  </address>
   </body>
+    
 </html>
