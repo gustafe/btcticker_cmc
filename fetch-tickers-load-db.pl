@@ -27,9 +27,18 @@ my ( $url_base, $api_key ) = (
 
 # Request a resource and make sure there were no connection errors
 my $ua = Mojo::UserAgent->new;
+
+### 2023-03-31 CMC ID mapping
+
+# 1 = BTC
+# 1027 = ETH
+# 1831 = Bitcoin Cash
+# 825 = Tether
+# 3602 = Bitcoin SV
+
 my $tx
     = $ua->get( $url_base
-        . 'quotes/latest?id=1,1831,3602,825' =>
+        . 'quotes/latest?id=1,1831,3602,825,1027' =>
         { Accept => 'application/json', 'X-CMC_PRO_API_KEY' => $api_key } );
 my $res = $tx->result;
 
