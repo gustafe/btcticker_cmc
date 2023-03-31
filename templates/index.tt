@@ -53,17 +53,20 @@ title="[% meta.generate_time %]">[% meta.generate_time %]</span></h3>
       </tbody>
     </table>
 <p />
+
+<h3>BTC historical price and percent change</h3>
+
 [% times = ['rank' 'name' 'price_usd' 'price_sat' 'vol_24h' '1h' '24h' '7d' '30d' '60d' '90d'] %]
     <table>
       <thead>
-	<tr><th>Time period</th><th>Price</th><th>Percentage change</th></tr>
-      </thead>
+	<tr><th>Time period</th><th>Price</th><th>Pct change</th></tr>
+     </thead>
       <tbody>
 	[% FOR n IN [ 5..10 ] -%]
 
 	<tr>
 	  <td>[% times.$n -%]</td>
-	  <td>[% content.btc_real / ( 1 + content.table_data.0.$n / 100 )  -%]</td>
+	  <td>[% FILTER format('%.10f') %][% content.btc_real / ( 1 + content.table_data.0.$n / 100 )  -%][% END %]</td>
 	  <td>[% content.table_data.0.$n -%]</td></tr>
 	[% END -%]
       </tbody>
@@ -75,7 +78,7 @@ title="[% meta.generate_time %]">[% meta.generate_time %]</span></h3>
 ## Random stats and figures
 [% FOREACH entry IN content.past_events %]
 
-<a href="[% entry.anchor  %]"></a>    
+<a id="[% entry.anchor  %]"></a>    
 ### [% entry.header -%]
 
 [% entry.content.join('
