@@ -84,7 +84,7 @@ sub past_events {
    # },
 		       {header=>"Balaji Srinavasan's H Y P E R B I T C O I N I Z A T I O N bet",
 			content=>["On 17 Mar 2023 VC \@balajis made a public bet that the USD would hyperinflate within 90 days and one BTC would sell for 1M USD. The current difference between that target and the price now is "
-				  .sprintf("USD %s.", nformat($last-1_000_000))
+				  .sprintf("USD <span style=\"color:%s\">%s</span>.", $last-1_000_000<0?'red':'black',nformat($last-1_000_000))
 				 ],
 		       anchor=>'balajis'},
 
