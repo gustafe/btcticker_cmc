@@ -83,10 +83,16 @@ sub past_events {
    #  anchor=>'lambo',
    # },
 		       {header=>"Balaji Srinavasan's H Y P E R B I T C O I N I Z A T I O N bet",
-			content=>["On 17 Mar 2023 VC \@balajis made a public bet that the USD would hyperinflate within 90 days and one BTC would sell for 1M USD. The current difference between that target and the price now is "
-				  .sprintf("USD <span style=\"color:%s\">%s</span>.", $last-1_000_000<0?'red':'black',nformat($last-1_000_000))
+			content=>[
+  "On 17 Mar 2023 VC \@balajis made a public
+  bet that the USD would hyperinflate within 90 days (15 Jun 2023) and
+  one BTC would sell for 1M USD. The current difference between that target
+  and the price now is ".
+  sprintf("USD <span style=\"color:%s\">%s</span>.",
+  $last-1_000_000<0?'red':'black',nformat($last-1_000_000)) ,
+  sprintf("%s: %d.", DateTime->compare(DateTime->now(),DateTime->new(year=>2023,month=>6,day=>15)) <0  ?  "Days left until bet expires":"Days since bet expired" , DateTime->new(year=>2023,month=>6,day=>15)->delta_days(DateTime->now())->delta_days)
 				 ],
-		       anchor=>'balajis'},
+		       anchor=>'balajis',},
 
         {   header  => "Tim Draper's coins from Silk Road",
             content => [
@@ -242,3 +248,4 @@ __DATA__
 2021-05-16: The tracker is on hiatus while a new source of data is found.
 2021-05-22: Tracker relaunched with data from CoinMarketCap.
 2023-03-21: added a little section about an unhinged VC bet
+2023-04-03: added Eth and Doge
