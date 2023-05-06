@@ -35,10 +35,10 @@ my $ua = Mojo::UserAgent->new;
 # 1831 = Bitcoin Cash
 # 825 = Tether
 # 3602 = Bitcoin SV
-
+# 74 = Doge
 my $tx
     = $ua->get( $url_base
-        . 'quotes/latest?id=1,1831,3602,825,1027' =>
+        . 'quotes/latest?id=1,1831,3602,825,1027,74' =>
         { Accept => 'application/json', 'X-CMC_PRO_API_KEY' => $api_key } );
 my $res = $tx->result;
 
