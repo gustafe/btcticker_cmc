@@ -35,6 +35,11 @@ h2.btc_latest {font-size: 200%; margin-left: 18%; }
 h1.title {font-size: 95%;}
 
 .indent { text-indent: 50px; }
+
+p {
+    max-width: 85%;
+}
+
 table {
     /* width: 45%; */
     }
