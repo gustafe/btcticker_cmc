@@ -84,13 +84,13 @@ sub past_events {
    # },
 		       {header=>"Balaji Srinavasan's H Y P E R B I T C O I N I Z A T I O N bet",
 			content=>[
-  "On 17 Mar 2023 VC \@balajis made a public
-  bet that the USD would hyperinflate within 90 days (15 Jun 2023) and
+  "On 17 Mar 2023 VC \@balajis made <a href='https://twitter.com/molly0xFFF/status/1636889983498739712'>a public
+  bet</a> that the USD would hyperinflate within 90 days (15 Jun 2023) and
   one BTC would sell for 1M USD. The current difference between that target
   and the price now is ".
   sprintf("USD <span style=\"color:%s\">%s</span>.",
   $last-1_000_000<0?'red':'black',nformat($last-1_000_000)) ,
-  sprintf("%s: %d.", DateTime->compare(DateTime->now(),DateTime->new(year=>2023,month=>6,day=>15)) <0  ?  "Days left until bet expires":"Days since bet expired" , DateTime->new(year=>2023,month=>6,day=>15)->delta_days(DateTime->now())->delta_days)
+  "Update 2023-05-02: <a href='https://twitter.com/jdcmedlock/status/1653452817179508736?s=20'>the bet has been settled</a>. The difference between the current price and 1M USD will remain here for posterity."
 				 ],
 		       anchor=>'balajis',},
 
