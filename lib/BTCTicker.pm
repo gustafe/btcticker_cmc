@@ -74,11 +74,13 @@ sub past_events {
     my @draper      = map { $draper->{$_} } qw/coins price_at_purchase/;
     my @past_events = (
 
+   # STRUCTURE: 		       
    # {
    #     header  => "Price of a 2017 Lamborghini LP 750-4 SV Roadster",
    #     content => [
    #         "The price of this car is USD&nbsp;535,500. The price in BTC is "
-   #           . sprintf( "%.05f BTC.", 535500 / $last )
+   #           . sprintf( "%.05f BTC.", 535500 / $last ),
+   #         "Second paragraph", 		       
    # 	       ],
    #  anchor=>'lambo',
    # },
